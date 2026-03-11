@@ -1,7 +1,7 @@
 Getting Started
 ===============
 
-BInstallation
+Installation
 ------------
 
 You can install Flask-HTTPAuth with ``pip``::
