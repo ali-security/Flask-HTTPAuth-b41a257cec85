@@ -326,7 +326,8 @@ class HTTPBasicAuth(HTTPAuth):
             @auth.verify_password
             def verify_password(username, password):
                 user = User.query.filter_by(username).first()
-                if user and passlib.hash.sha256_crypt.verify(password, user.password_hash):
+                if user and passlib.hash.sha256_crypt.verify(
+                        password, user.password_hash):
                     return user
 
         If this callback is defined, it is also invoked when the request does
