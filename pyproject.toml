@@ -26,6 +26,9 @@ Homepage = "https://github.com/miguelgrinberg/flask-httpauth"
 "Bug Tracker" = "https://github.com/miguelgrinberg/flask-httpauth/issues"
 
 [project.optional-dependencies]
+dev = [
+    "tox",
+]
 docs = [
     "furo",
     "sphinx",

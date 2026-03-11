@@ -103,7 +103,7 @@ class HTTPAuth:
         return decorated
 
     def authenticate_header(self):
-        return '{0} realm="{1}"'.format(self.scheme, self.realm)
+        return f'{self.scheme} realm="{self.realm}"'
 
     def get_auth(self):
         auth = None
@@ -286,7 +286,7 @@ class HTTPBasicAuth(HTTPAuth):
     with the ``WWW-Authenticate`` header.
     """
     def __init__(self, scheme=None, realm=None):
-        super(HTTPBasicAuth, self).__init__(scheme or 'Basic', realm)
+        super().__init__(scheme or 'Basic', realm)
 
         self.hash_password_callback = None
         self.verify_password_callback = None
@@ -422,7 +422,7 @@ class HTTPDigestAuth(HTTPAuth):
     """
     def __init__(self, scheme=None, realm=None, use_ha1_pw=False, qop='auth',
                  algorithm='MD5'):
-        super(HTTPDigestAuth, self).__init__(scheme or 'Digest', realm)
+        super().__init__(scheme or 'Digest', realm)
         self.use_ha1_pw = use_ha1_pw
         if isinstance(qop, str):
             self.qop = [v.strip() for v in qop.split(',')]
@@ -535,14 +535,17 @@ class HTTPDigestAuth(HTTPAuth):
         nonce = self.get_nonce()
         opaque = self.get_opaque()
         if self.qop:
-            return ('{0} realm="{1}",nonce="{2}",opaque="{3}",algorithm="{4}"'
-                    ',qop="{5}"').format(
-                self.scheme, self.realm, nonce,
-                opaque, self.algorithm, ','.join(self.qop))
+            qop_str = ','.join(self.qop)
+            return (
+                f'{self.scheme} realm="{self.realm}",nonce="{nonce}",'
+                f'opaque="{opaque}",algorithm="{self.algorithm}"'
+                f',qop="{qop_str}"'
+            )
         else:
-            return '{0} realm="{1}",nonce="{2}",opaque="{3}"'.format(
-                self.scheme, self.realm, nonce,
-                opaque)
+            return (
+                f'{self.scheme} realm="{self.realm}",nonce="{nonce}",'
+                f'opaque="{opaque}"'
+            )
 
     def authenticate(self, auth, stored_password_or_ha1):
         if not auth or not auth.username or not auth.realm or not auth.uri \
@@ -593,7 +596,7 @@ class HTTPTokenAuth(HTTPAuth):
 
             X-API-Key: this-is-my-token
         """
-        super(HTTPTokenAuth, self).__init__(scheme, realm, header)
+        super().__init__(scheme, realm, header)
 
         self.verify_token_callback = None
 
@@ -622,7 +625,7 @@ class HTTPTokenAuth(HTTPAuth):
             return self.ensure_sync(self.verify_token_callback)(token)
 
 
-class MultiAuth(object):
+class MultiAuth:
     """Create a multiple authentication object.
 
     The arguments are one or more instances of ``HTTPBasicAuth``,
