@@ -27,6 +27,7 @@ Homepage = "https://github.com/miguelgrinberg/flask-httpauth"
 
 [project.optional-dependencies]
 docs = [
+    "furo",
     "sphinx",
 ]
 

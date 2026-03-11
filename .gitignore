@@ -36,3 +36,8 @@ nosetests.xml
 .python-version
 venv
 coverage.xml
+
+.direnv
+.envrc
+requirements*.txt
+docs/_build
