@@ -1,5 +1,13 @@
 # Flask-HTTPAuth change log
 
+**Release 4.8.1** - 2026-03-28
+
+- Do not accept empty or missing tokens ([commit](https://github.com/miguelgrinberg/flask-httpauth/commit/b15ffe9e50e110d7174ccd944f642079e1dcf9ee))
+- New installation section in the documentation ([commit](https://github.com/miguelgrinberg/flask-httpauth/commit/0fbd469824e478d2bf62382a172e01dc2302658e))
+- Revised documentation ([commit](https://github.com/miguelgrinberg/flask-httpauth/commit/3c8f3bac9e86368d7a86c94194c835244ce566c3))
+- Fix documentation links [#163](https://github.com/miguelgrinberg/flask-httpauth/issues/163) ([commit](https://github.com/miguelgrinberg/flask-httpauth/commit/36e85e825bd989838d5bf90818184eacd9e4be1a)) (thanks **Ofer Nave**!)
+- Code modernization ([commit](https://github.com/miguelgrinberg/flask-httpauth/commit/bc689124a25960f6e481ea308d3ccf03bbfaec5e))
+
 **Release 4.8.0** - 2023-04-27
 
 - Changes to handle breaking changes in Flask/Werkzeug 2.3 [#160](https://github.com/miguelgrinberg/flask-httpauth/issues/160) ([commit](https://github.com/miguelgrinberg/flask-httpauth/commit/76548398847fcedc8421a8f4b4c2d12ee16270fe))
